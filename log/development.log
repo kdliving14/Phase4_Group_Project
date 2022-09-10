@@ -1,0 +1,78 @@
+  [1m[35m (110.3ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_development" ENCODING = 'unicode'[0m
+  [1m[35m (44.7ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_test" ENCODING = 'unicode'[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAlgorithms (20220909230121)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "algorithms" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (30.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220909230121"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20220910000327)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220910000327"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSolutions (20220910000512)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "solutions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "algorithm_id" bigint NOT NULL, "solution" text, "time_complexity" character varying, "space_complexity" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f83c42cef4"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_a94f230e0d"
+FOREIGN KEY ("algorithm_id")
+  REFERENCES "algorithms" ("id")
+)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_user_id" ON "solutions" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_algorithm_id" ON "solutions" ("algorithm_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220910000512"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-10 00:39:04.530609"], ["updated_at", "2022-09-10 00:39:04.530609"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSolution Load (5.3ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions"[0m
+  [1m[36mAlgorithm Load (5.5ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "brian"], ["created_at", "2022-09-10 00:40:12.175310"], ["updated_at", "2022-09-10 00:40:12.175310"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "karter"], ["created_at", "2022-09-10 00:40:12.178253"], ["updated_at", "2022-09-10 00:40:12.178253"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "loren"], ["created_at", "2022-09-10 00:40:12.180077"], ["updated_at", "2022-09-10 00:40:12.180077"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "tommy"], ["created_at", "2022-09-10 00:40:12.181548"], ["updated_at", "2022-09-10 00:40:12.181548"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Create (0.6ms)[0m  [1m[32mINSERT INTO "algorithms" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Two Sum"], ["description", "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\n    You may assume that each input would have exactly one solution, and you may not use the same element twice.\n    \n    You can return the answer in any order.\n\n    Problem Type: Array\n    \n    Example 1: \n    \n    Input: nums = [2,7,11,15], target = 9\n    Output: [0,1]\n    Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].\n\n    Example 2:\n\n    Input: nums = [3,2,4], target = 6\n    Output: [1,2]\n\n    Example 3: \n\n    Input: nums = [3,3], target = 6\n    Output: [0,1]\n\n    Constraints: \n\n    2 <= nums.length <= 104\n    -109 <= nums[i] <= 109\n    -109 <= target <= 109\n    Only one valid answer exists."], ["created_at", "2022-09-10 00:40:12.188352"], ["updated_at", "2022-09-10 00:40:12.188352"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.3ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSolution Create (1.3ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["algorithm_id", 1], ["solution", "\n    language: Python\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        prevMap = {} # val : index\n        \n        for i, n in enumerate(nums):\n            diff = target - n\n            if diff in prevMap:\n                return [prevMap[diff], i]\n            prevMap[n] = i\n        return"], ["time_complexity", "O(n)"], ["space_complexity", "O(n)"], ["created_at", "2022-09-10 00:40:12.203763"], ["updated_at", "2022-09-10 00:40:12.203763"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.2ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.5ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 3], ["algorithm_id", 1], ["solution", "\n    language: Ruby\n    def two_sum(nums, target)\n        h = {}\n        nums.each_with_index do |a, i|\n            n = target - a\n            return [h[n], i] if h[n]\n            h[a] = i\n    end"], ["time_complexity", "O(n)"], ["space_complexity", "O(n)"], ["created_at", "2022-09-10 00:40:12.207383"], ["updated_at", "2022-09-10 00:40:12.207383"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Create (0.2ms)[0m  [1m[32mINSERT INTO "algorithms" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Best Time To Buy And Sell Stock"], ["description", "You are given an array prices where `prices[i]` is the price of a given stock on the ith day.\n    You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.\n    Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.\n\n    Problem Type: Array\n\n    Example 1:\n\n    Input: prices = [7,1,5,3,6,4]\n    Output: 5\n    Explanation: Buy on day 2 (price = 1)\n    and sell on day 5 (price = 6), profit = 6-1 = 5.\n    Note that buying on day 2 and selling on day 1 is\n    not allowed because you must buy before you sell.\n\n    Example 2:\n\n    Input: prices = [7,6,4,3,1]\n    Output: 0\n    Explanation: In this case, no transactions\n      are done and the max profit = 0.\n\n    Constraints:\n\n    1 <= prices.length <= 105\n    0 <= prices[i] <= 10"], ["created_at", "2022-09-10 00:40:12.208976"], ["updated_at", "2022-09-10 00:40:12.208976"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.1ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.3ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 2], ["algorithm_id", 2], ["solution", "\n    language: Ruby\n    def max_profit(prices)\n        min_price = prices.inject(:+)\n        max_profit = 0\n        current_profit = 0\n          \n        prices.each do |price|\n          min_price = price < min_price ? price : min_price     \n          current_profit = price - min_price  \n          max_profit = current_profit > max_profit ? current_profit : max_profit  \n        end    \n          \n        max_profit  \n      end"], ["time_complexity", "O(n)"], ["space_complexity", "O(1)"], ["created_at", "2022-09-10 00:40:12.211875"], ["updated_at", "2022-09-10 00:40:12.211875"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Create (0.1ms)[0m  [1m[32mINSERT INTO "algorithms" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Contains Duplicate"], ["description", "Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.\n    \n    Example 1:\n\n    Input: nums = [1,2,3,1]\n    Output: true\n\n    Example 2: \n\n    Input: nums = [1,2,3,4]\n    Output: false\n\n    Constraints:\n\n    1 <= nums.length <= 105\n    -109 <= nums[i] <= 109"], ["created_at", "2022-09-10 00:40:12.212994"], ["updated_at", "2022-09-10 00:40:12.212994"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.1ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.4ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 4], ["algorithm_id", 3], ["solution", "\n    language: Ruby\n    def contains_duplicate(nums)\n        hash = {}\n        nums.each do |x|\n            return true if hash[x] == x\n            hash[x] = x;\n        end\n        false\n    end"], ["time_complexity", "O(n)"], ["space_complexity", "O(n)"], ["created_at", "2022-09-10 00:40:12.215412"], ["updated_at", "2022-09-10 00:40:12.215412"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
