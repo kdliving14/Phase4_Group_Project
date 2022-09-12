@@ -5,10 +5,10 @@ Algorithm.destroy_all
 
 puts "seeding users..."
 
-brian = User.create!(username: 'brian')
-karter = User.create!(username: 'karter')
-loren = User.create!(username: 'loren')
-tommy = User.create!(username: 'tommy')
+brian = User.create!(username: 'brian', password: "test")
+karter = User.create!(username: 'karter', password: "test")
+loren = User.create!(username: 'loren', password: "test")
+tommy = User.create!(username: 'tommy', password: "test")
 
 puts "seeding algos and solutions..."
 
