@@ -1,8 +1,11 @@
 import './App.css';
 import {useEffect, useState} from "react";
+import {Route, Routes} from "react-router-dom";
+
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import AlgorithmList from './components/AlgorithmList'
+import AlgorithmPage from './components/AlgorithmPage';
 
 function App() {
  
@@ -24,21 +27,21 @@ function App() {
   }, []); 
 
   if (currentUser){
-    return (<>
-      <h2>Welcome, {currentUser.username}!</h2>
-      <Navbar setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>
-      <AlgorithmList setErrors={setErrors} errors={errors}/>
+    return (
+    <>
+        <h2>Welcome, {currentUser.username}!</h2>
+          <Navbar setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>
+          <Routes>
+            <Route exact path="/algorithms" element={<AlgorithmList setErrors={setErrors} errors={errors}/>}></Route>
+            <Route path="/algorithms/:id" element={<AlgorithmPage/>}></Route>
+            <Route exact path="/" element={<Login/>}></Route>
+            
+          </Routes>
+          
       </>)
   }else{
     return (<Login updateUser={updateUser} setErrors={setErrors} errors={errors}/>)
   }
-  
-  // return (
-  //   <>
-  //   <p> {currentUser ? `Current User: ${currentUser.username}` : null}</p>
-  //   <Login updateUser={updateUser} />
-  //   </>
-  // );
 }
 
 export default App;

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import  {Input, Form} from 'semantic-ui-react'
+import {useNavigate} from "react-router-dom"
 
 function Login({ updateUser, setErrors, errors }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     
@@ -16,7 +19,8 @@ function Login({ updateUser, setErrors, errors }) {
     })
     .then((r) => {
       if (r.ok) 
-      {r.json().then(user => {updateUser(user)})}
+      {r.json().then(user => {updateUser(user)
+        navigate(`/algorithms`)})}
       else
       {r.json().then((err) => setErrors(err.errors))}
     })

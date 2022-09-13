@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 
 function AlgorithmList({setErrors, errors})
 {
-
     const [algorithms, setAlgorithms] = useState([]);
 
     useEffect(()=>{
@@ -15,6 +14,7 @@ function AlgorithmList({setErrors, errors})
             {algorithms.map((alg)=>(
                 <AlgorithmCard 
                 key = {alg.id}
+                id = {alg.id}
                 title = {alg.title}
                 description = {alg.description}
                 />
