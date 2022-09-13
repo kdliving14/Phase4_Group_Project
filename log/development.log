@@ -1079,3 +1079,943 @@ Started GET "/favicon.ico" for ::1 at 2022-09-12 09:44:21 -0700
   
 ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (46.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "react_rails_api_project_template_development"[0m
+  [1m[35m (50.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "react_rails_api_project_template_test"[0m
+  [1m[35m (100.7ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_development" ENCODING = 'unicode'[0m
+  [1m[35m (137.8ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "algorithms" CASCADE[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "algorithms" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "solutions" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "solutions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "algorithm_id" bigint NOT NULL, "solution" text, "time_complexity" character varying, "space_complexity" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_algorithm_id" ON "solutions" ("algorithm_id")[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_user_id" ON "solutions" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_a94f230e0d"
+FOREIGN KEY ("algorithm_id")
+  REFERENCES "algorithms" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_f83c42cef4"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220910000512)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220909230121),
+(20220910000327);
+
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-12 21:57:11.613487"], ["updated_at", "2022-09-12 21:57:11.613487"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "0a8b819630af5d069d0eca9d7a389d54da28e6b7"], ["created_at", "2022-09-12 21:57:11.620877"], ["updated_at", "2022-09-12 21:57:11.620877"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "algorithms" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "algorithms" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "solutions" CASCADE[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "solutions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "algorithm_id" bigint NOT NULL, "solution" text, "time_complexity" character varying, "space_complexity" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_algorithm_id" ON "solutions" ("algorithm_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_user_id" ON "solutions" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_a94f230e0d"
+FOREIGN KEY ("algorithm_id")
+  REFERENCES "algorithms" ("id")
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_f83c42cef4"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220910000512)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220909230121),
+(20220910000327);
+
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-12 21:57:11.727635"], ["updated_at", "2022-09-12 21:57:11.727635"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-09-12 21:57:11.733030"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "0a8b819630af5d069d0eca9d7a389d54da28e6b7"], ["created_at", "2022-09-12 21:57:11.738379"], ["updated_at", "2022-09-12 21:57:11.738379"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSolution Load (1.1ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions"[0m
+  [1m[36mAlgorithm Load (1.2ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms"[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "brian"], ["created_at", "2022-09-12 21:57:11.808294"], ["updated_at", "2022-09-12 21:57:11.808294"]]
+  [1m[36mTRANSACTION (40.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "karter"], ["created_at", "2022-09-12 21:57:11.854171"], ["updated_at", "2022-09-12 21:57:11.854171"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "loren"], ["created_at", "2022-09-12 21:57:11.858242"], ["updated_at", "2022-09-12 21:57:11.858242"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "tommy"], ["created_at", "2022-09-12 21:57:11.861900"], ["updated_at", "2022-09-12 21:57:11.861900"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Create (0.5ms)[0m  [1m[32mINSERT INTO "algorithms" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Two Sum"], ["description", "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\n    You may assume that each input would have exactly one solution, and you may not use the same element twice.\n    \n    You can return the answer in any order.\n\n    Problem Type: Array\n    \n    Example 1: \n    \n    Input: nums = [2,7,11,15], target = 9\n    Output: [0,1]\n    Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].\n\n    Example 2:\n\n    Input: nums = [3,2,4], target = 6\n    Output: [1,2]\n\n    Example 3: \n\n    Input: nums = [3,3], target = 6\n    Output: [0,1]\n\n    Constraints: \n\n    2 <= nums.length <= 104\n    -109 <= nums[i] <= 109\n    -109 <= target <= 109\n    Only one valid answer exists."], ["created_at", "2022-09-12 21:57:11.871284"], ["updated_at", "2022-09-12 21:57:11.871284"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.2ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.7ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["algorithm_id", 1], ["solution", "\n    language: Python\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        prevMap = {} # val : index\n        \n        for i, n in enumerate(nums):\n            diff = target - n\n            if diff in prevMap:\n                return [prevMap[diff], i]\n            prevMap[n] = i\n        return"], ["time_complexity", "O(n)"], ["space_complexity", "O(n)"], ["created_at", "2022-09-12 21:57:11.888764"], ["updated_at", "2022-09-12 21:57:11.888764"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.2ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.4ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 3], ["algorithm_id", 1], ["solution", "\n    language: Ruby\n    def two_sum(nums, target)\n        h = {}\n        nums.each_with_index do |a, i|\n            n = target - a\n            return [h[n], i] if h[n]\n            h[a] = i\n    end"], ["time_complexity", "O(n)"], ["space_complexity", "O(n)"], ["created_at", "2022-09-12 21:57:11.894871"], ["updated_at", "2022-09-12 21:57:11.894871"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Create (0.4ms)[0m  [1m[32mINSERT INTO "algorithms" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Best Time To Buy And Sell Stock"], ["description", "You are given an array prices where `prices[i]` is the price of a given stock on the ith day.\n    You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.\n    Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.\n\n    Problem Type: Array\n\n    Example 1:\n\n    Input: prices = [7,1,5,3,6,4]\n    Output: 5\n    Explanation: Buy on day 2 (price = 1)\n    and sell on day 5 (price = 6), profit = 6-1 = 5.\n    Note that buying on day 2 and selling on day 1 is\n    not allowed because you must buy before you sell.\n\n    Example 2:\n\n    Input: prices = [7,6,4,3,1]\n    Output: 0\n    Explanation: In this case, no transactions\n      are done and the max profit = 0.\n\n    Constraints:\n\n    1 <= prices.length <= 105\n    0 <= prices[i] <= 10"], ["created_at", "2022-09-12 21:57:11.897488"], ["updated_at", "2022-09-12 21:57:11.897488"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.2ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.4ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 2], ["algorithm_id", 2], ["solution", "\n    language: Ruby\n    def max_profit(prices)\n        min_price = prices.inject(:+)\n        max_profit = 0\n        current_profit = 0\n          \n        prices.each do |price|\n          min_price = price < min_price ? price : min_price     \n          current_profit = price - min_price  \n          max_profit = current_profit > max_profit ? current_profit : max_profit  \n        end    \n          \n        max_profit  \n      end"], ["time_complexity", "O(n)"], ["space_complexity", "O(1)"], ["created_at", "2022-09-12 21:57:11.903926"], ["updated_at", "2022-09-12 21:57:11.903926"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Create (0.2ms)[0m  [1m[32mINSERT INTO "algorithms" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Contains Duplicate"], ["description", "Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.\n    \n    Example 1:\n\n    Input: nums = [1,2,3,1]\n    Output: true\n\n    Example 2: \n\n    Input: nums = [1,2,3,4]\n    Output: false\n\n    Constraints:\n\n    1 <= nums.length <= 105\n    -109 <= nums[i] <= 109"], ["created_at", "2022-09-12 21:57:11.906494"], ["updated_at", "2022-09-12 21:57:11.906494"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.2ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.4ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 4], ["algorithm_id", 3], ["solution", "\n    language: Ruby\n    def contains_duplicate(nums)\n        hash = {}\n        nums.each do |x|\n            return true if hash[x] == x\n            hash[x] = x;\n        end\n        false\n    end"], ["time_complexity", "O(n)"], ["space_complexity", "O(n)"], ["created_at", "2022-09-12 21:57:11.912210"], ["updated_at", "2022-09-12 21:57:11.912210"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2022-09-12 14:57:55 -0700
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/karterlivingston/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/karterlivingston/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.2ms | Allocations: 294)
+Completed 200 OK in 11ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 2279)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 14:57:56 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPasswordtoUsers (20220912220945)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220912220945"]]
+  [1m[36mTRANSACTION (20.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (40.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "react_rails_api_project_template_development"[0m
+  [1m[35m (80.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "react_rails_api_project_template_test"[0m
+  [1m[35m (104.7ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_development" ENCODING = 'unicode'[0m
+  [1m[35m (100.0ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "algorithms" CASCADE[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "algorithms" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "solutions" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "solutions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "algorithm_id" bigint NOT NULL, "solution" text, "time_complexity" character varying, "space_complexity" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_algorithm_id" ON "solutions" ("algorithm_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_user_id" ON "solutions" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_a94f230e0d"
+FOREIGN KEY ("algorithm_id")
+  REFERENCES "algorithms" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_f83c42cef4"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220912220945)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220909230121),
+(20220910000327),
+(20220910000512);
+
+[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-12 22:11:36.048006"], ["updated_at", "2022-09-12 22:11:36.048006"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "390f385404f4f5a0e294fae25c19b103411cba82"], ["created_at", "2022-09-12 22:11:36.071946"], ["updated_at", "2022-09-12 22:11:36.071946"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "algorithms" CASCADE[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "algorithms" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "solutions" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "solutions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "algorithm_id" bigint NOT NULL, "solution" text, "time_complexity" character varying, "space_complexity" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_algorithm_id" ON "solutions" ("algorithm_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_user_id" ON "solutions" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_a94f230e0d"
+FOREIGN KEY ("algorithm_id")
+  REFERENCES "algorithms" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_f83c42cef4"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220912220945)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220909230121),
+(20220910000327),
+(20220910000512);
+
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-12 22:11:36.203461"], ["updated_at", "2022-09-12 22:11:36.203461"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-09-12 22:11:36.208970"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "390f385404f4f5a0e294fae25c19b103411cba82"], ["created_at", "2022-09-12 22:11:36.214133"], ["updated_at", "2022-09-12 22:11:36.214133"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSolution Load (0.6ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions"[0m
+  [1m[36mAlgorithm Load (0.5ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms"[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (53.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "react_rails_api_project_template_development"[0m
+  [1m[35m (40.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "react_rails_api_project_template_test"[0m
+  [1m[35m (97.2ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_development" ENCODING = 'unicode'[0m
+  [1m[35m (103.5ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "algorithms" CASCADE[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "algorithms" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "solutions" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "solutions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "algorithm_id" bigint NOT NULL, "solution" text, "time_complexity" character varying, "space_complexity" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_algorithm_id" ON "solutions" ("algorithm_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_user_id" ON "solutions" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_a94f230e0d"
+FOREIGN KEY ("algorithm_id")
+  REFERENCES "algorithms" ("id")
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_f83c42cef4"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220912220945)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220909230121),
+(20220910000327),
+(20220910000512);
+
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-12 22:12:18.931862"], ["updated_at", "2022-09-12 22:12:18.931862"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "390f385404f4f5a0e294fae25c19b103411cba82"], ["created_at", "2022-09-12 22:12:18.951600"], ["updated_at", "2022-09-12 22:12:18.951600"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "algorithms" CASCADE[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "algorithms" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "solutions" CASCADE[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "solutions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "algorithm_id" bigint NOT NULL, "solution" text, "time_complexity" character varying, "space_complexity" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_algorithm_id" ON "solutions" ("algorithm_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_solutions_on_user_id" ON "solutions" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_a94f230e0d"
+FOREIGN KEY ("algorithm_id")
+  REFERENCES "algorithms" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "solutions" ADD CONSTRAINT "fk_rails_f83c42cef4"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220912220945)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220909230121),
+(20220910000327),
+(20220910000512);
+
+[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-12 22:12:19.085799"], ["updated_at", "2022-09-12 22:12:19.085799"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-09-12 22:12:19.091487"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "390f385404f4f5a0e294fae25c19b103411cba82"], ["created_at", "2022-09-12 22:12:19.096446"], ["updated_at", "2022-09-12 22:12:19.096446"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSolution Load (0.6ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions"[0m
+  [1m[36mAlgorithm Load (0.5ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "brian"], ["created_at", "2022-09-12 22:12:19.423136"], ["updated_at", "2022-09-12 22:12:19.423136"], ["password_digest", "$2a$12$Iat9JdxW2dcddV7JDhY7WO06UhxvqgOicG0ZJT2f2QNRk0fdXo2A."]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "karter"], ["created_at", "2022-09-12 22:12:19.683161"], ["updated_at", "2022-09-12 22:12:19.683161"], ["password_digest", "$2a$12$QdQaEKcPWTvC7TlC4jUAyegunczj7ViJEvCjAftx6BL9cBB.SMTka"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "loren"], ["created_at", "2022-09-12 22:12:19.943100"], ["updated_at", "2022-09-12 22:12:19.943100"], ["password_digest", "$2a$12$tKhS1zjNaFDDIMGo5a4wD.uPzP3y7oDJeWbFv.p66tyDryGC6jf92"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "tommy"], ["created_at", "2022-09-12 22:12:20.202189"], ["updated_at", "2022-09-12 22:12:20.202189"], ["password_digest", "$2a$12$ZD.PsBQV0y0ETCgY6ULHAOk6nnngvRuMbi5eJ.qXoZzXAczllZYEm"]]
+  [1m[36mTRANSACTION (40.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Create (0.5ms)[0m  [1m[32mINSERT INTO "algorithms" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Two Sum"], ["description", "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\n    You may assume that each input would have exactly one solution, and you may not use the same element twice.\n    \n    You can return the answer in any order.\n\n    Problem Type: Array\n    \n    Example 1: \n    \n    Input: nums = [2,7,11,15], target = 9\n    Output: [0,1]\n    Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].\n\n    Example 2:\n\n    Input: nums = [3,2,4], target = 6\n    Output: [1,2]\n\n    Example 3: \n\n    Input: nums = [3,3], target = 6\n    Output: [0,1]\n\n    Constraints: \n\n    2 <= nums.length <= 104\n    -109 <= nums[i] <= 109\n    -109 <= target <= 109\n    Only one valid answer exists."], ["created_at", "2022-09-12 22:12:20.253030"], ["updated_at", "2022-09-12 22:12:20.253030"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.2ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.8ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["algorithm_id", 1], ["solution", "\n    language: Python\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        prevMap = {} # val : index\n        \n        for i, n in enumerate(nums):\n            diff = target - n\n            if diff in prevMap:\n                return [prevMap[diff], i]\n            prevMap[n] = i\n        return"], ["time_complexity", "O(n)"], ["space_complexity", "O(n)"], ["created_at", "2022-09-12 22:12:20.270156"], ["updated_at", "2022-09-12 22:12:20.270156"]]
+  [1m[36mTRANSACTION (36.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.2ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.5ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 3], ["algorithm_id", 1], ["solution", "\n    language: Ruby\n    def two_sum(nums, target)\n        h = {}\n        nums.each_with_index do |a, i|\n            n = target - a\n            return [h[n], i] if h[n]\n            h[a] = i\n    end"], ["time_complexity", "O(n)"], ["space_complexity", "O(n)"], ["created_at", "2022-09-12 22:12:20.312767"], ["updated_at", "2022-09-12 22:12:20.312767"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Create (0.2ms)[0m  [1m[32mINSERT INTO "algorithms" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Best Time To Buy And Sell Stock"], ["description", "You are given an array prices where `prices[i]` is the price of a given stock on the ith day.\n    You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.\n    Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.\n\n    Problem Type: Array\n\n    Example 1:\n\n    Input: prices = [7,1,5,3,6,4]\n    Output: 5\n    Explanation: Buy on day 2 (price = 1)\n    and sell on day 5 (price = 6), profit = 6-1 = 5.\n    Note that buying on day 2 and selling on day 1 is\n    not allowed because you must buy before you sell.\n\n    Example 2:\n\n    Input: prices = [7,6,4,3,1]\n    Output: 0\n    Explanation: In this case, no transactions\n      are done and the max profit = 0.\n\n    Constraints:\n\n    1 <= prices.length <= 105\n    0 <= prices[i] <= 10"], ["created_at", "2022-09-12 22:12:20.315889"], ["updated_at", "2022-09-12 22:12:20.315889"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.4ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.7ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 2], ["algorithm_id", 2], ["solution", "\n    language: Ruby\n    def max_profit(prices)\n        min_price = prices.inject(:+)\n        max_profit = 0\n        current_profit = 0\n          \n        prices.each do |price|\n          min_price = price < min_price ? price : min_price     \n          current_profit = price - min_price  \n          max_profit = current_profit > max_profit ? current_profit : max_profit  \n        end    \n          \n        max_profit  \n      end"], ["time_complexity", "O(n)"], ["space_complexity", "O(1)"], ["created_at", "2022-09-12 22:12:20.321960"], ["updated_at", "2022-09-12 22:12:20.321960"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Create (0.3ms)[0m  [1m[32mINSERT INTO "algorithms" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Contains Duplicate"], ["description", "Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.\n    \n    Example 1:\n\n    Input: nums = [1,2,3,1]\n    Output: true\n\n    Example 2: \n\n    Input: nums = [1,2,3,4]\n    Output: false\n\n    Constraints:\n\n    1 <= nums.length <= 105\n    -109 <= nums[i] <= 109"], ["created_at", "2022-09-12 22:12:20.324963"], ["updated_at", "2022-09-12 22:12:20.324963"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlgorithm Load (0.2ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms" WHERE "algorithms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSolution Create (0.5ms)[0m  [1m[32mINSERT INTO "solutions" ("user_id", "algorithm_id", "solution", "time_complexity", "space_complexity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 4], ["algorithm_id", 3], ["solution", "\n    language: Ruby\n    def contains_duplicate(nums)\n        hash = {}\n        nums.each do |x|\n            return true if hash[x] == x\n            hash[x] = x;\n        end\n        false\n    end"], ["time_complexity", "O(n)"], ["space_complexity", "O(n)"], ["created_at", "2022-09-12 22:12:20.331196"], ["updated_at", "2022-09-12 22:12:20.331196"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users" for ::1 at 2022-09-12 15:12:44 -0700
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.7ms)
+Completed 200 OK in 28ms (Views: 12.3ms | ActiveRecord: 10.7ms | Allocations: 6932)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 15:12:44 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users" for ::1 at 2022-09-12 15:13:07 -0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.58ms)
+Completed 200 OK in 14ms (Views: 7.1ms | ActiveRecord: 3.6ms | Allocations: 4837)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 15:13:07 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:19:02 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"karter", "session"=>{"username"=>"karter"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "karter"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 401 Unauthorized in 298ms (Views: 0.4ms | ActiveRecord: 7.7ms | Allocations: 7486)
+
+
+Started GET "/users" for ::1 at 2022-09-12 15:19:34 -0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.57ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 1405)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 15:19:35 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:20:14 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"karter", "session"=>{"username"=>"karter"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "karter"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 401 Unauthorized in 259ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 562)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:24:22 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"karter", "session"=>{"username"=>"karter"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "karter"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+Completed 401 Unauthorized in 331ms (Views: 7.3ms | ActiveRecord: 10.9ms | Allocations: 5028)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:26:36 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"karter", "session"=>{"username"=>"karter"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "karter"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+Completed 401 Unauthorized in 279ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 1150)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:27:13 -0700
+  
+SyntaxError (/Users/karterlivingston/Development/code/Phase4_Group_Project/app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+...r json: {"Invalid Credentials"}, status: :unauthorized
+...                              ^
+):
+  
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:29:13 -0700
+  
+SyntaxError (/Users/karterlivingston/Development/code/Phase4_Group_Project/app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+...r json: {"Invalid Credentials"}, status: :unauthorized
+...                              ^
+):
+  
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:30:17 -0700
+  
+SyntaxError (/Users/karterlivingston/Development/code/Phase4_Group_Project/app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+...r json: {"Invalid Credentials"}, status: :unauthorized
+...                              ^
+):
+  
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:32:33 -0700
+  
+SyntaxError (/Users/karterlivingston/Development/code/Phase4_Group_Project/app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+...r json: {"Invalid Credentials"}, status: :unauthorized
+...                              ^
+):
+  
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:36:08 -0700
+  
+SyntaxError (/Users/karterlivingston/Development/code/Phase4_Group_Project/app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+...r json: {"Invalid Credentials"}, status: :unauthorized
+...                              ^
+):
+  
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:41:17 -0700
+  
+SyntaxError (/Users/karterlivingston/Development/code/Phase4_Group_Project/app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+...r json: {"Invalid Credentials"}, status: :unauthorized
+...                              ^
+):
+  
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+Started GET "/users" for ::1 at 2022-09-12 15:41:28 -0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.61ms)
+Completed 200 OK in 71ms (Views: 2.7ms | ActiveRecord: 54.1ms | Allocations: 8839)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 15:41:28 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/solutions" for ::1 at 2022-09-12 15:41:33 -0700
+Processing by SolutionsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  [1m[36mSolution Load (0.7ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions"[0m
+  ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.23ms)
+Completed 200 OK in 30ms (Views: 19.6ms | ActiveRecord: 6.4ms | Allocations: 11290)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 15:41:33 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users" for ::1 at 2022-09-12 15:41:56 -0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.5ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.1ms | Allocations: 1686)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 15:41:56 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/algorithms" for ::1 at 2022-09-12 15:42:01 -0700
+Processing by AlgorithmsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  [1m[36mAlgorithm Load (2.1ms)[0m  [1m[34mSELECT "algorithms".* FROM "algorithms"[0m
+  ↳ app/controllers/algorithms_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mSolution Load (0.7ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions" WHERE "solutions"."algorithm_id" = $1[0m  [["algorithm_id", 1]]
+[active_model_serializers]   ↳ app/controllers/algorithms_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mSolution Load (0.8ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions" WHERE "solutions"."algorithm_id" = $1[0m  [["algorithm_id", 2]]
+[active_model_serializers]   ↳ app/controllers/algorithms_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mSolution Load (1.0ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions" WHERE "solutions"."algorithm_id" = $1[0m  [["algorithm_id", 3]]
+[active_model_serializers]   ↳ app/controllers/algorithms_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/algorithms_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/algorithms_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/algorithms_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/algorithms_controller.rb:3:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (28.43ms)
+Completed 200 OK in 54ms (Views: 27.4ms | ActiveRecord: 16.9ms | Allocations: 14061)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 15:42:02 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/solutions" for ::1 at 2022-09-12 15:42:24 -0700
+Processing by SolutionsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  [1m[36mSolution Load (0.3ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions"[0m
+  ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.79ms)
+Completed 200 OK in 29ms (Views: 8.5ms | ActiveRecord: 10.8ms | Allocations: 9425)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 15:42:24 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/solutions" for ::1 at 2022-09-12 15:42:37 -0700
+Processing by SolutionsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  [1m[36mSolution Load (0.3ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions"[0m
+  ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.87ms)
+Completed 200 OK in 34ms (Views: 17.4ms | ActiveRecord: 7.2ms | Allocations: 13870)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 15:42:38 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/login" for ::1 at 2022-09-12 15:44:04 -0700
+  
+SyntaxError (/Users/karterlivingston/Development/code/Phase4_Group_Project/app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+...r json: {"Invalid Credentials"}, status: :unauthorized
+...                              ^
+):
+  
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+Started POST "/login" for ::1 at 2022-09-12 15:44:48 -0700
+  
+SyntaxError (/Users/karterlivingston/Development/code/Phase4_Group_Project/app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+...r json: {`Invalid Credentials`}, status: :unauthorized
+...                              ^
+):
+  
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+app/controllers/sessions_controller.rb:10: syntax error, unexpected '}', expecting =>
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:45:47 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 19ms (Views: 7.4ms | ActiveRecord: 4.9ms | Allocations: 5223)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:46:15 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 5ms (Views: 1.3ms | ActiveRecord: 1.2ms | Allocations: 1314)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:46:20 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 3ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1318)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:46:26 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms | Allocations: 1306)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:47:14 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 4ms (Views: 1.2ms | ActiveRecord: 0.4ms | Allocations: 1306)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:50:00 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 13ms (Views: 4.8ms | ActiveRecord: 3.3ms | Allocations: 5031)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:54:06 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 5ms (Views: 1.8ms | ActiveRecord: 0.7ms | Allocations: 1325)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 15:54:32 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 3ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1317)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:01:54 -0700
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 401 Unauthorized in 29ms (Views: 9.6ms | ActiveRecord: 6.2ms | Allocations: 9302)
+
+
+Started GET "/solutions" for ::1 at 2022-09-12 16:03:34 -0700
+Processing by SolutionsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  [1m[36mSolution Load (8.7ms)[0m  [1m[34mSELECT "solutions".* FROM "solutions"[0m
+  ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/solutions_controller.rb:3:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.91ms)
+Completed 200 OK in 67ms (Views: 28.6ms | ActiveRecord: 19.7ms | Allocations: 13582)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 16:03:34 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:08:28 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 15ms (Views: 4.9ms | ActiveRecord: 4.8ms | Allocations: 5059)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:13:43 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 3ms (Views: 1.4ms | ActiveRecord: 0.4ms | Allocations: 1309)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:13:48 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 4ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 1333)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:13:54 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms | Allocations: 1335)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:14:38 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 4ms (Views: 1.6ms | ActiveRecord: 0.5ms | Allocations: 1315)
+
+
+Started GET "/login" for ::1 at 2022-09-12 16:14:51 -0700
+Processing by FallbackController#index as HTML
+  Parameters: {"path"=>"login"}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 1503)
+
+
+  
+ArgumentError (`render file:` should be given the absolute path to a file. 'public/index.html' was given instead):
+  
+app/controllers/fallback_controller.rb:7:in `index'
+Started GET "/favicon.ico" for ::1 at 2022-09-12 16:14:51 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/login" for ::1 at 2022-09-12 16:14:59 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"karter", "password"=>"[FILTERED]", "session"=>{"username"=>"karter", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "karter"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+Completed 200 OK in 302ms (Views: 2.4ms | ActiveRecord: 0.8ms | Allocations: 1784)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:15:57 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (10.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 14ms (Views: 1.7ms | ActiveRecord: 10.4ms | Allocations: 1321)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:16:04 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 4ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 1311)
+
+
+Started GET "/" for ::1 at 2022-09-12 16:16:27 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/karterlivingston/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/karterlivingston/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.6ms | Allocations: 182)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 840)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-09-12 16:16:27 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started DELETE "/logout" for ::1 at 2022-09-12 16:18:19 -0700
+Processing by SessionsController#destroy as */*
+  Parameters: {"username"=>"karter", "password"=>"[FILTERED]", "session"=>{"username"=>"karter", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 204 No Content in 16ms (ActiveRecord: 4.6ms | Allocations: 4339)
+
+
+Started POST "/login" for ::1 at 2022-09-12 16:18:43 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"Brian", "password"=>"[FILTERED]", "session"=>{"username"=>"Brian", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Brian"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 51ms (Views: 35.2ms | ActiveRecord: 0.6ms | Allocations: 1551)
+
+
+Started POST "/login" for ::1 at 2022-09-12 16:18:50 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"brian", "password"=>"[FILTERED]", "session"=>{"username"=>"brian", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "brian"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 335ms (Views: 10.9ms | ActiveRecord: 1.2ms | Allocations: 3018)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:21:12 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 3ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1321)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:21:55 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"karter", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 4ms (Views: 1.4ms | ActiveRecord: 0.7ms | Allocations: 1311)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:22:21 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"brian", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"brian", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 3ms (Views: 1.4ms | ActiveRecord: 0.4ms | Allocations: 1315)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:24:57 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"loren", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"loren", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 3ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 1317)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-12 16:26:03 -0700
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"loren", "password"=>"[FILTERED]", "session"=>{"username"=>"loren", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "loren"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 200 OK in 282ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1275)
+
+
