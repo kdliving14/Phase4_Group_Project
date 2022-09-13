@@ -1,58 +1,41 @@
-// import logo from './logo.svg';
 import './App.css';
-// import { Button } from 'semantic-ui-react'
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import Login from './components/Login'
+import Navbar from './components/Navbar'
 
 function App() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([])
-  const [currentUser, setCurrentUser] = useState({});
-
-  function handleSubmit(e) {
+ 
+  const [currentUser, setCurrentUser] = useState(null);
 
   const updateUser = (user) => setCurrentUser(user)
 
-    e.preventDefault();
-
-    fetch("/login", 
-    {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({ username, password }),
-    })
-    .then(res => {
+  useEffect(()=>{
+    fetch("/me").then((res) => {
       if(res.ok){
-          res.json().then(user => {
-            updateUser(user)
-            console.log(`you are now ${user.username}`)
-          })
-      } else {
-          res.json().then(json => setErrors(json.errors))
+        res.json()
+        .then((currentUser)=>setCurrentUser(currentUser))
+      }
+      else{
+        
       }
     })
-    .catch(res => console.log(res))
+  }, []); 
 
+  if (currentUser){
+    return (<>
+      <h2>Welcome, {currentUser.username}!</h2>
+      <Navbar setCurrentUser={setCurrentUser}/>
+      </>)
+  }else{
+    return (<Login updateUser={updateUser}/>)
   }
-
-  return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => {setUsername(e.target.value)}}
-      />
-      <input
-        type='password'
-        value={password}
-        onChange={(e) => {setPassword(e.target.value)}}
-      />
-      <button type="submit">Login</button>
-    </form>
-    {errors? <div>{errors}</div>:null}
-    </div>
-  );
+  
+  // return (
+  //   <>
+  //   <p> {currentUser ? `Current User: ${currentUser.username}` : null}</p>
+  //   <Login updateUser={updateUser} />
+  //   </>
+  // );
 }
 
 export default App;
