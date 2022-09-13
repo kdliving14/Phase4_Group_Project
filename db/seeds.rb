@@ -945,4 +945,364 @@ Algorithm.create!(
     0 <= nums[i] <= 105",
 )
 
+Algorithm.create!(
+    title: "Clone Graph",
+    description: "Given a reference of a node in a connected undirected graph.
+
+    Return a deep copy (clone) of the graph.
+    
+    Each node in the graph contains a value (int) and a list (List[Node]) of its neighbors.
+    
+    class Node {
+        public int val;
+        public List<Node> neighbors;
+    }
+     
+    
+    Test case format:
+    
+    For simplicity, each node's value is the same as the node's index (1-indexed). For example, the first node with val == 1, the second node with val == 2, and so on. The graph is represented in the test case using an adjacency list.
+    
+    An adjacency list is a collection of unordered lists used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.
+    
+    The given node will always be the first node with val = 1. You must return the copy of the given node as a reference to the cloned graph.
+    
+    Constraints:
+
+    The number of nodes in the graph is in the range [0, 100].
+    1 <= Node.val <= 100
+    Node.val is unique for each node.
+    There are no repeated edges and no self-loops in the graph.
+    The Graph is connected and all nodes can be visited starting from the given node.",
+)
+
+Algorithm.create!(
+    title: 'Course Schedule',
+    description: "There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+    For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+    Return true if you can finish all courses. Otherwise, return false.
+    
+     
+    
+    Example 1:
+    
+    Input: numCourses = 2, prerequisites = [[1,0]]
+    Output: true
+    Explanation: There are a total of 2 courses to take. 
+    To take course 1 you should have finished course 0. So it is possible.
+    Example 2:
+    
+    Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
+    Output: false
+    Explanation: There are a total of 2 courses to take. 
+    To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
+     
+    
+    Constraints:
+    
+    1 <= numCourses <= 2000
+    0 <= prerequisites.length <= 5000
+    prerequisites[i].length == 2
+    0 <= ai, bi < numCourses
+    All the pairs prerequisites[i] are unique.",
+)
+
+Algorithm.create!(
+    title: "Pacific Atlantic Water Flow",
+    description: "There is an m x n rectangular island that borders both the Pacific Ocean and Atlantic Ocean. The Pacific Ocean touches the island's left and top edges, and the Atlantic Ocean touches the island's right and bottom edges.
+
+    The island is partitioned into a grid of square cells. You are given an m x n integer matrix heights where heights[r][c] represents the height above sea level of the cell at coordinate (r, c).
+    
+    The island receives a lot of rain, and the rain water can flow to neighboring cells directly north, south, east, and west if the neighboring cell's height is less than or equal to the current cell's height. Water can flow from any cell adjacent to an ocean into the ocean.
+    
+    Return a 2D list of grid coordinates result where result[i] = [ri, ci] denotes that rain water can flow from cell (ri, ci) to both the Pacific and Atlantic oceans.
+    
+    Constraints:
+
+    m == heights.length
+    n == heights[r].length
+    1 <= m, n <= 200
+    0 <= heights[r][c] <= 105",
+)
+
+Algorithm.create!(
+    title: "Number of Islands",
+    description: 'Given an m x n 2D binary grid grid which represents a map of "1"s (land) and "0"s (water), return the number of islands.
+
+    An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+    
+     
+    
+    Example 1:
+    
+    Input: grid = [
+      ["1","1","1","1","0"],
+      ["1","1","0","1","0"],
+      ["1","1","0","0","0"],
+      ["0","0","0","0","0"]
+    ]
+    Output: 1
+    Example 2:
+    
+    Input: grid = [
+      ["1","1","0","0","0"],
+      ["1","1","0","0","0"],
+      ["0","0","1","0","0"],
+      ["0","0","0","1","1"]
+    ]
+    Output: 3
+     
+    
+    Constraints:
+    
+    m == grid.length
+    n == grid[i].length
+    1 <= m, n <= 300
+    grid[i][j] is "0" or "1".',
+)
+
+Algorithm.create!(
+    title: "Longest Consecutive Sequence",
+    description: 'Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+
+    You must write an algorithm that runs in O(n) time.
+    
+    Example 1:
+    
+    Input: nums = [100,4,200,1,3,2]
+    Output: 4
+    Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+
+    Example 2:
+    
+    Input: nums = [0,3,7,2,5,8,4,6,0,1]
+    Output: 9
+    
+    Constraints:
+    
+    0 <= nums.length <= 105
+    -109 <= nums[i] <= 109',
+)
+
+Algorithm.create!(
+    title: 'Alien Dictionary',
+    description: "There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of non-empty words from the dictionary, where words are sorted lexicographically by the rules of this new language. Derive the order of letters in this language.",
+)
+
+Algorithm.create!(
+    title: "Graph Valid Tree",
+    description: 'Given n nodes labeled from 0 to n-1 and a list of undirected edges (each edge is a pair of nodes), write a function to check whether these edges make up a valid tree.',
+)
+
+Algorithm.create!(
+    title: 'Number of Connected Components in an Undirected Graph',
+    description: "Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge is a pair of nodes), write a function to find the number of connected components in an undirected graph.
+
+    Example 1:
+         0          3
+         |          |
+         1 --- 2    4
+    Given n = 5 and edges = [[0, 1], [1, 2], [3, 4]], return 2.
+    
+    Example 2:
+         0           4
+         |           |
+         1 --- 2 --- 3
+    Given n = 5 and edges = [[0, 1], [1, 2], [2, 3], [3, 4]], return 1.",
+)
+
+Algorithm.create!(
+    title: 'Insert Interval',
+    description: "You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an interval newInterval = [start, end] that represents the start and end of another interval.
+
+    Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).
+    
+    Return intervals after the insertion.
+    
+     
+    
+    Example 1:
+    
+    Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
+    Output: [[1,5],[6,9]]
+
+    Example 2:
+    
+    Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
+    Output: [[1,2],[3,10],[12,16]]
+    Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+     
+    
+    Constraints:
+    
+    0 <= intervals.length <= 104
+    intervals[i].length == 2
+    0 <= starti <= endi <= 105
+    intervals is sorted by starti in ascending order.
+    newInterval.length == 2
+    0 <= start <= end <= 105",
+)
+
+Algorithm.create!(
+    title: 'Merge Intervals',
+    description: "Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+    Example 1:
+    
+    Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+    Output: [[1,6],[8,10],[15,18]]
+    Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+    Example 2:
+    
+    Input: intervals = [[1,4],[4,5]]
+    Output: [[1,5]]
+    Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+     
+    
+    Constraints:
+    
+    1 <= intervals.length <= 104
+    intervals[i].length == 2
+    0 <= starti <= endi <= 104",
+)
+
+Algorithm.create!(
+    title: "Non-overlapping Intervals",
+    description: "Given an array of intervals intervals where intervals[i] = [starti, endi], return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
+ 
+
+    Example 1:
+    
+    Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
+    Output: 1
+    Explanation: [1,3] can be removed and the rest of the intervals are non-overlapping.
+
+    Example 2:
+    
+    Input: intervals = [[1,2],[1,2],[1,2]]
+    Output: 2
+    Explanation: You need to remove two [1,2] to make the rest of the intervals non-overlapping.
+
+    Example 3:
+    
+    Input: intervals = [[1,2],[2,3]]
+    Output: 0
+    Explanation: You don't need to remove any of the intervals since they're already non-overlapping.
+     
+    
+    Constraints:
+    
+    1 <= intervals.length <= 105
+    intervals[i].length == 2
+    -5 * 104 <= starti < endi <= 5 * 104",
+)
+
+Algorithm.create!(
+    title: 'Meeting Rooms',
+    description: "Given an array of meeting time intervals consisting of start and end times [s1, e1], [s2, e2], ... , determine if a person could attend all meetings.
+
+    For example,
+    Given [ [0, 30], [5, 10], [15, 20] ],
+    return false.",
+)
+
+Algorithm.create!(
+    title: "Meeting Rooms 2",
+    description: 'Given an array of meeting time intervals consisting of start and end times[[s1,e1],[s2,e2],...](si< ei), find the minimum number of conference rooms required.',
+)
+
+Algorithm.create!(
+    title: 'Reverse a Linked List',
+    description: "Given the head of a singly linked list, reverse the list, and return the reversed list.
+    Constraints:
+
+    The number of nodes in the list is the range [0, 5000].
+    -5000 <= Node.val <= 5000",
+)
+
+Algorithm.create!(
+    title: "Detect Cycle in a Linked List",
+    description: "Given head, the head of a linked list, determine if the linked list has a cycle in it.
+
+    There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+    
+    Return true if there is a cycle in the linked list. Otherwise, return false.
+    
+    Example 1:
+
+    Input: head = [1,2], pos = 0
+    Output: true
+    Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.",
+)
+
+Algorithm.create!(
+    title: "Merge Two Sorted Lists",
+    description: "You are given the heads of two sorted linked lists list1 and list2.
+
+    Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
+    
+    Return the head of the merged linked list.
+    
+    Constraints:
+
+    The number of nodes in both lists is in the range [0, 50].
+    -100 <= Node.val <= 100
+    Both list1 and list2 are sorted in non-decreasing order.",
+)
+
+Algorithm.create!(
+    title: "Merge K Sorted Lists",
+    description: "You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+
+    Merge all the linked-lists into one sorted linked-list and return it.
+    
+     
+    
+    Example 1:
+    
+    Input: lists = [[1,4,5],[1,3,4],[2,6]]
+    Output: [1,1,2,3,4,4,5,6]
+    Explanation: The linked-lists are:
+    [
+      1->4->5,
+      1->3->4,
+      2->6
+    ]
+    merging them into one sorted list:
+    1->1->2->3->4->4->5->6
+    Example 2:
+    
+    Input: lists = []
+    Output: []
+    Example 3:
+    
+    Input: lists = [[]]
+    Output: []
+     
+    
+    Constraints:
+    
+    k == lists.length
+    0 <= k <= 104
+    0 <= lists[i].length <= 500
+    -104 <= lists[i][j] <= 104
+    lists[i] is sorted in ascending order.
+    The sum of lists[i].length will not exceed 104.",
+)
+
+Algorithm.create!(
+    title: 'Remove Nth Node From End of List',
+    description: "Given the head of a linked list, remove the nth node from the end of the list and return its head.
+    
+    Constraints:
+
+    The number of nodes in the list is sz.
+    1 <= sz <= 30
+    0 <= Node.val <= 100
+    1 <= n <= sz",
+)
+
+
 puts "done seeding"
