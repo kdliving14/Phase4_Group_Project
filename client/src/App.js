@@ -2,10 +2,12 @@ import './App.css';
 import {useEffect, useState} from "react";
 import Login from './components/Login'
 import Navbar from './components/Navbar'
+import AlgorithmList from './components/AlgorithmList'
 
 function App() {
  
   const [currentUser, setCurrentUser] = useState(null);
+  const [errors, setErrors] = useState([]);
 
   const updateUser = (user) => setCurrentUser(user)
 
@@ -16,7 +18,7 @@ function App() {
         .then((currentUser)=>setCurrentUser(currentUser))
       }
       else{
-        
+        // {res.json().then((err) => setErrors(err.errors))}
       }
     })
   }, []); 
@@ -24,10 +26,11 @@ function App() {
   if (currentUser){
     return (<>
       <h2>Welcome, {currentUser.username}!</h2>
-      <Navbar setCurrentUser={setCurrentUser}/>
+      <Navbar setCurrentUser={setCurrentUser} setErrors={setErrors} errors={errors}/>
+      <AlgorithmList setErrors={setErrors} errors={errors}/>
       </>)
   }else{
-    return (<Login updateUser={updateUser}/>)
+    return (<Login updateUser={updateUser} setErrors={setErrors} errors={errors}/>)
   }
   
   // return (

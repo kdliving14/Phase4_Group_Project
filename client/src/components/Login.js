@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import  {Input, Form} from 'semantic-ui-react'
 
-function Login({ updateUser }) {
+function Login({ updateUser, setErrors, errors }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
 
   function handleSubmit(e) {
     

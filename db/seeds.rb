@@ -232,8 +232,8 @@ Solution.create!(
     time_complexity: "O(n)",
     space_complexity: "O(n)",
 )
-
-Algorithm.create!( #5
+#5
+Algorithm.create!( 
     title: 'Maximum Subarray',
     description: "Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
     A subarray is a contiguous part of an array.
@@ -261,7 +261,7 @@ Algorithm.create!( #5
     -104 <= nums[i] <= 104",
 )
 
-Algorithm.create!( #6
+Algorithm.create!(
     title: "Maximum Product Subarray",
     description: "Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
 
@@ -331,7 +331,7 @@ Algorithm.create!( #7
     nums is sorted and rotated between 1 and n times.",
 )
 
-Algorithm.create!( #8
+Algorithm.create!(
     title: "Search in Rotated Sorted Array",
     description: "There is an integer array nums sorted in ascending order (with distinct values).
 
@@ -436,7 +436,7 @@ Algorithm.create!(#10
     0 <= height[i] <= 104",
 )
 
-Algorithm.create!(#11
+Algorithm.create!(
     title: "Sum of Two Integers",
     description: "Given two integers a and b, return the sum of the two integers without using the operators + and -.
 
@@ -458,7 +458,7 @@ Algorithm.create!(#11
     -1000 <= a, b <= 1000",
 )
 
-Algorithm.create!(#12
+Algorithm.create!(
     title: "Number of 1 Bits",
     description: "Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
 
@@ -530,8 +530,6 @@ Algorithm.create!(
     title: "Missing Number",
     description: "Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 
- 
-
     Example 1:
     
     Input: nums = [3,0,1]
@@ -592,8 +590,6 @@ Algorithm.create!(
     description: "You are climbing a staircase. It takes n steps to reach the top.
 
     Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
-    
-     
     
     Example 1:
     
@@ -685,7 +681,7 @@ Algorithm.create!(
 
 Algorithm.create!(
     title: "Longest Common Subsequence",
-    description: "Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
+    description: 'Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
 
     A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
     
@@ -716,12 +712,12 @@ Algorithm.create!(
     Constraints:
     
     1 <= text1.length, text2.length <= 1000
-    text1 and text2 consist of only lowercase English characters.",
+    text1 and text2 consist of only lowercase English characters.',
 )
 
 Algorithm.create!(
     title: "World Break Problem",
-    description: "Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+    description: 'Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
 
     Note that the same word in the dictionary may be reused multiple times in the segmentation.
     
@@ -752,7 +748,7 @@ Algorithm.create!(
     1 <= wordDict.length <= 1000
     1 <= wordDict[i].length <= 20
     s and wordDict[i] consist of only lowercase English letters.
-    All the strings of wordDict are unique.",
+    All the strings of wordDict are unique.',
 )
 
 Algorithm.create!(
@@ -856,17 +852,17 @@ Algorithm.create!(
 
 Algorithm.create!(
     title: "Decode Ways",
-    description: "A message containing letters from A-Z can be encoded into numbers using the following mapping:
+    description: 'A message containing letters from A-Z can be encoded into numbers using the following mapping:
 
-    'A' -> "1"
-    'B' -> "2"
+    "A" -> "1"
+    "B" -> "2"
     ...
-    'Z' -> "26"
+    "Z" -> "26"
     To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, "11106" can be mapped into:
     
     "AAJF" with the grouping (1 1 10 6)
     "KJF" with the grouping (11 10 6)
-    Note that the grouping (1 11 06) is invalid because "06" cannot be mapped into 'F' since "6" is different from "06".
+    Note that the grouping (1 11 06) is invalid because "06" cannot be mapped into "F" since "6" is different from "06".
     
     Given a string s containing only digits, return the number of ways to decode it.
     
@@ -896,12 +892,12 @@ Algorithm.create!(
     Constraints:
     
     1 <= s.length <= 100
-    s contains only digits and may contain leading zero(s).",
+    s contains only digits and may contain leading zero(s).',
 )
 
 Algorithm.create!(
     title: "Unique Paths",
-    description: "There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
+    description: 'There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
 
     Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
     
@@ -919,7 +915,7 @@ Algorithm.create!(
 
     Constraints:
 
-    1 <= m, n <= 100",
+    1 <= m, n <= 100',
 )
 
 Algorithm.create!(
