@@ -1,3 +1,6 @@
+// import {Link, Router} from "react-router-dom"
+
+
 function Navbar({setCurrentUser}){
     
     function handleLogout(){
@@ -7,6 +10,10 @@ function Navbar({setCurrentUser}){
     }
         return(
             <header>
+                {/* <Router> */}
+                    <a href={`/algorithms`}><button>Algorithm List</button></a>
+                    
+                {/* </Router> */}
                 <button className="ui button" onClick={handleLogout}>Logout!</button>
             </header>
         )
