@@ -1,5 +1,3 @@
-// import {Link, Router} from "react-router-dom"
-
 
 function Navbar({setCurrentUser}){
     
@@ -9,13 +7,20 @@ function Navbar({setCurrentUser}){
         }).then(()=> setCurrentUser(null));
     }
         return(
-            <header>
-                {/* <Router> */}
-                    <a href={`/algorithms`}><button>Algorithm List</button></a>
-                    
-                {/* </Router> */}
-                <button className="ui button" onClick={handleLogout}>Logout!</button>
-            </header>
+            <div className="ui menu">
+                <a className="item" href={`/`}>
+                Home
+                </a>
+                <a className="item" href={`/algorithms`}>
+                Algorithm List
+                </a> 
+                <div className="right menu">
+                    <div className="item">
+                        <button className="ui button" onClick={handleLogout}>Logout!</button>
+                    </div>
+                </div>
+                <br></br>
+            </div>
         )
 }
 
