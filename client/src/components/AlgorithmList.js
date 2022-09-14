@@ -1,7 +1,7 @@
 import AlgorithmCard from "./AlgorithmCard"
 import {useEffect, useState} from "react";
 
-function AlgorithmList({setErrors, errors})
+function AlgorithmList()
 {
     const [algorithms, setAlgorithms] = useState([]);
 

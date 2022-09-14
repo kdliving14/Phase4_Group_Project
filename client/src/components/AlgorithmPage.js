@@ -9,22 +9,25 @@ function AlgorithmPage(){
     const params = useParams()
     const [isSolutionHidden, setIsSolutionHidden] = useState(true);
 
-    const [alg, setAlg]=useState({
-        title: "",
-        description:""
-    })
+    const [alg, setAlg]=useState({})
+    let solutions = []
 
     useEffect(()=>{
         fetch(`/algorithms/${params.id}`)
         .then(res=>{
             if(res.ok){
                 res.json()
-                .then(res=>setAlg(res))
+                .then(res=>{setAlg(res)})
             }})
         .catch(res=>{
             console.log(res)
         })
     }, []); 
+
+    solutions = alg.solutions
+    
+    // console.log(solutions[0].id)
+    // console.log(isSolutionHidden)
 
     return (
         <div className="ui segment">
@@ -32,15 +35,21 @@ function AlgorithmPage(){
             <p>{alg.description}</p>
             <div className="ui two bottom attached buttons">
             <button className="ui button">Create Solution</button>
-            <button className="ui button" onClick={()=> setIsSolutionHidden(!isSolutionHidden)}>Show Solutions</button>
+            {/* <button className="ui button" onClick={()=> setIsSolutionHidden(!isSolutionHidden)}>Show Solutions</button> */}
             </div>
             <div hidden={isSolutionHidden}>
-                <p>
-                    {console.log(alg.solutions)
-                    // an array of objects ^
-                    // .map((sol)=>())?
-                    }
-                </p>
+                {/* <Solutions id = {alg.solutions.id}/> */}
+                {/* {solutions.map((s)=>{
+                    
+                    <Solutions 
+                        key = {s.id}
+                        id = {s.id}
+                        solution ={s.solution}
+                        time = {s.time_complexity}
+                        space = {s.space_complexity}
+                    />
+                })}  */}
+                
             </div>
         </div>
     )

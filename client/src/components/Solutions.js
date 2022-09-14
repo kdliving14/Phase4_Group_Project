@@ -1,13 +1,28 @@
-import {Icon, Button} from 'semantic-ui-react'
-import {Link} from "react-router-dom"
+import {useEffect, useState} from "react"
+import SolutionCard from "./SolutionCard";
 
-function Solutions({}){
+function Solutions()
+{
+    const [sol, setSol]=useState({})
+
+    useEffect(()=>{
+        fetch("/solutions")
+        .then(res => res.json()).then(setSol)}, [])
+        
+
     return(
-        <div>
-            <br></br>
-            {/* insert code here */}
-            <br></br>
-        </div>
-    )
+    <div className="ui segment">
+        {sol.map((s)=>(
+                <SolutionCard 
+                key ={s.id}
+                id = {s.id}
+                alg = {s.algorithm_id}
+                time ={s.time_complexity}
+                space ={s.space_complexity}
+                solution = {s.solution}
+                />
+            ))}
+    </div>)
+    
 }
 export default Solutions

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_12_220945) do
+ActiveRecord::Schema.define(version: 2022_09_14_194557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 2022_09_12_220945) do
   end
 
   create_table "solutions", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "algorithm_id", null: false
     t.text "solution"
     t.string "time_complexity"
     t.string "space_complexity"
+    t.bigint "user_id", null: false
+    t.bigint "algorithm_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["algorithm_id"], name: "index_solutions_on_algorithm_id"
@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 2022_09_12_220945) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
   end
 
   add_foreign_key "solutions", "algorithms"

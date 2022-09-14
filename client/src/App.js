@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Navbar from './components/Navbar'
 import AlgorithmList from './components/AlgorithmList'
 import AlgorithmPage from './components/AlgorithmPage';
+import Solutions from './components/Solutions';
 
 function App() {
  
@@ -21,9 +22,6 @@ function App() {
         res.json()
         .then((currentUser)=>setCurrentUser(currentUser))
       }
-      else{
-        // {res.json().then((err) => setErrors(err.errors))}
-      }
     })
   }, []); 
 
@@ -35,6 +33,7 @@ function App() {
           <Routes>
             <Route exact path="/algorithms" element={<AlgorithmList setErrors={setErrors} errors={errors}/>}></Route>
             <Route path="/algorithms/:id" element={<AlgorithmPage/>}></Route>
+            <Route exact path="/solutions" element={<Solutions />}></Route>
             <Route exact path="/" element={<Home/>}></Route>
           </Routes>
           <br></br>
