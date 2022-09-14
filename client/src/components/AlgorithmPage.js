@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 
+import Solutions from "./Solutions";
+
 
 function AlgorithmPage(){
 
     const params = useParams()
+    const [isSolutionHidden, setIsSolutionHidden] = useState(true);
 
     const [alg, setAlg]=useState({
         title: "",
@@ -24,10 +27,21 @@ function AlgorithmPage(){
     }, []); 
 
     return (
-        <div>
-            <h2>{alg.title}</h2>
+        <div className="ui segment">
+            <h2 className="ui center aligned header">{alg.title}</h2>
             <p>{alg.description}</p>
-            <button>Show Solutions</button>
+            <div className="ui two bottom attached buttons">
+            <button className="ui button">Create Solution</button>
+            <button className="ui button" onClick={()=> setIsSolutionHidden(!isSolutionHidden)}>Show Solutions</button>
+            </div>
+            <div hidden={isSolutionHidden}>
+                <p>
+                    {console.log(alg.solutions)
+                    // an array of objects ^
+                    // .map((sol)=>())?
+                    }
+                </p>
+            </div>
         </div>
     )
 }
