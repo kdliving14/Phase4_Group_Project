@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-
 import Solutions from "./Solutions";
+import ReactMarkdown from "react-markdown";
 
 
-function AlgorithmPage(){
+function AlgorithmPage({}){
 
     const params = useParams()
     const [isSolutionHidden, setIsSolutionHidden] = useState(true);
@@ -29,7 +29,7 @@ function AlgorithmPage(){
     return (
         <div className="ui segment">
             <h2 className="ui center aligned header">{alg.title}</h2>
-            <p>{alg.description}</p>
+            <ReactMarkdown>{alg.description}</ReactMarkdown>
             <div className="ui two bottom attached buttons">
             <button className="ui button">Create Solution</button>
             <button className="ui button" onClick={()=> setIsSolutionHidden(!isSolutionHidden)}>Show Solutions</button>
