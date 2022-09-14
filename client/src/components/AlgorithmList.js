@@ -10,7 +10,7 @@ function AlgorithmList({setErrors, errors})
     .then(res => res.json()).then(setAlgorithms)}, []); 
 
     return (
-        <div>
+        <div className="ui segment">
             {algorithms.map((alg)=>(
                 <AlgorithmCard 
                 key = {alg.id}
