@@ -1,7 +1,7 @@
 import SolutionCard from "./SolutionCard";
 import {Card} from 'semantic-ui-react'
 
-function Solutions({sol})
+function Solutions({sol, deleteSolution, currentUser})
 {
     return(
     <div className="ui segment">
@@ -14,6 +14,9 @@ function Solutions({sol})
                 time ={s.time_complexity}
                 space ={s.space_complexity}
                 solution = {s.solution}
+                user ={s.user.id}
+                currentUser = {currentUser}
+                deleteSolution ={deleteSolution}
                 />
             ))}
         </Card.Group>
