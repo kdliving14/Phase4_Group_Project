@@ -1,55 +1,49 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-
-import Solutions from "./Solutions";
-
+import { Form, TextArea, Input, Button, Divider } from "semantic-ui-react";
 
 function AlgorithmPage(){
 
     const params = useParams()
-    const [isSolutionHidden, setIsSolutionHidden] = useState(true);
+    const [isFormHidden, setIsFormHidden] = useState(true);
 
     const [alg, setAlg]=useState({})
-    let solutions = []
 
     useEffect(()=>{
         fetch(`/algorithms/${params.id}`)
-        .then(res=>{
-            if(res.ok){
-                res.json()
-                .then(res=>{setAlg(res)})
-            }})
-        .catch(res=>{
-            console.log(res)
-        })
+        .then(res=>{if(res.ok){res.json().then(res=>{setAlg(res)})}})
+        .catch(res=>{console.log(res)})
     }, []); 
-
-    solutions = alg.solutions
-    
-    // console.log(solutions[0].id)
-    // console.log(isSolutionHidden)
-
+  
     return (
         <div className="ui segment">
             <h2 className="ui center aligned header">{alg.title}</h2>
             <p>{alg.description}</p>
-            <div className="ui two bottom attached buttons">
-            <button className="ui button">Create Solution</button>
-            {/* <button className="ui button" onClick={()=> setIsSolutionHidden(!isSolutionHidden)}>Show Solutions</button> */}
-            </div>
-            <div hidden={isSolutionHidden}>
-                {/* <Solutions id = {alg.solutions.id}/> */}
-                {/* {solutions.map((s)=>{
-                    
-                    <Solutions 
-                        key = {s.id}
-                        id = {s.id}
-                        solution ={s.solution}
-                        time = {s.time_complexity}
-                        space = {s.space_complexity}
-                    />
-                })}  */}
-                
+            
+            <Button fluid onClick={()=> setIsFormHidden(!isFormHidden)}>Create Solution</Button>
+            
+            <div hidden={isFormHidden}>
+                <br></br>
+            <Divider />
+                <Form>
+                    <br></br>
+                    <Form.Group widths='equal'>
+                        <Form.Field
+                            control={Input}
+                            label='Time Complexity'
+                        />
+                        <Form.Field
+                            control={Input}
+                            label='Space Complexity'
+                        />
+                    </Form.Group>
+                    <Form.Field
+                        control={TextArea}
+                        label='Solution'
+                        placeholder='Put your solution here...'
+                        />
+                        <Button fluid>Submit!</Button>
+                </Form>
             </div>
         </div>
     )

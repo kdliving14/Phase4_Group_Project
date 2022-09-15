@@ -1,17 +1,11 @@
-import {useEffect, useState} from "react"
 import SolutionCard from "./SolutionCard";
+import {Card} from 'semantic-ui-react'
 
-function Solutions()
+function Solutions({sol})
 {
-    const [sol, setSol]=useState({})
-
-    useEffect(()=>{
-        fetch("/solutions")
-        .then(res => res.json()).then(setSol)}, [])
-        
-
     return(
     <div className="ui segment">
+        <Card.Group>
         {sol.map((s)=>(
                 <SolutionCard 
                 key ={s.id}
@@ -22,6 +16,7 @@ function Solutions()
                 solution = {s.solution}
                 />
             ))}
+        </Card.Group>
     </div>)
     
 }
