@@ -1,46 +1,50 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-import Solutions from "./Solutions";
+import { Form, TextArea, Input, Button, Divider } from "semantic-ui-react";
 import ReactMarkdown from "react-markdown";
-
 
 function AlgorithmPage({}){
 
     const params = useParams()
-    const [isSolutionHidden, setIsSolutionHidden] = useState(true);
+    const [isFormHidden, setIsFormHidden] = useState(true);
 
-    const [alg, setAlg]=useState({
-        title: "",
-        description:""
-    })
+    const [alg, setAlg]=useState({})
 
     useEffect(()=>{
         fetch(`/algorithms/${params.id}`)
-        .then(res=>{
-            if(res.ok){
-                res.json()
-                .then(res=>setAlg(res))
-            }})
-        .catch(res=>{
-            console.log(res)
-        })
+        .then(res=>{if(res.ok){res.json().then(res=>{setAlg(res)})}})
+        .catch(res=>{console.log(res)})
     }, []); 
-
+  
     return (
         <div className="ui segment">
             <h2 className="ui center aligned header">{alg.title}</h2>
             <ReactMarkdown>{alg.description}</ReactMarkdown>
-            <div className="ui two bottom attached buttons">
-            <button className="ui button">Create Solution</button>
-            <button className="ui button" onClick={()=> setIsSolutionHidden(!isSolutionHidden)}>Show Solutions</button>
-            </div>
-            <div hidden={isSolutionHidden}>
-                <p>
-                    {console.log(alg.solutions)
-                    // an array of objects ^
-                    // .map((sol)=>())?
-                    }
-                </p>
+            
+            <Button fluid onClick={()=> setIsFormHidden(!isFormHidden)}>Create Solution</Button>
+            
+            <div hidden={isFormHidden}>
+                <br></br>
+            <Divider />
+                <Form>
+                    <br></br>
+                    <Form.Group widths='equal'>
+                        <Form.Field
+                            control={Input}
+                            label='Time Complexity'
+                        />
+                        <Form.Field
+                            control={Input}
+                            label='Space Complexity'
+                        />
+                    </Form.Group>
+                    <Form.Field
+                        control={TextArea}
+                        label='Solution'
+                        placeholder='Put your solution here...'
+                        />
+                        <Button fluid>Submit!</Button>
+                </Form>
             </div>
         </div>
     )

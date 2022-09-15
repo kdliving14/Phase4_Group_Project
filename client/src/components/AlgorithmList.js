@@ -1,16 +1,11 @@
 import AlgorithmCard from "./AlgorithmCard"
-import {useEffect, useState} from "react";
+import {Card} from 'semantic-ui-react'
 
-function AlgorithmList({setErrors, errors})
+function AlgorithmList({algorithms})
 {
-    const [algorithms, setAlgorithms] = useState([]);
-
-    useEffect(()=>{
-    fetch("/algorithms")
-    .then(res => res.json()).then(setAlgorithms)}, []); 
-
     return (
         <div className="ui segment">
+            <Card.Group>
             {algorithms.map((alg)=>(
                 <AlgorithmCard 
                 key = {alg.id}
@@ -19,6 +14,7 @@ function AlgorithmList({setErrors, errors})
                 description = {alg.description}
                 />
             ))}
+            </Card.Group>
         </div>
     )
 }
