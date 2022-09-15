@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Form, TextArea, Input, Button, Divider } from "semantic-ui-react";
+import ReactMarkdown from "react-markdown";
 
 function AlgorithmPage(){
 
@@ -18,7 +19,7 @@ function AlgorithmPage(){
     return (
         <div className="ui segment">
             <h2 className="ui center aligned header">{alg.title}</h2>
-            <p>{alg.description}</p>
+            <ReactMarkdown>{alg.description}</ReactMarkdown>
             
             <Button fluid onClick={()=> setIsFormHidden(!isFormHidden)}>Create Solution</Button>
             
