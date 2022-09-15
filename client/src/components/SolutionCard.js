@@ -20,7 +20,6 @@ function SolutionCard({id, solution, alg, time, space, user, deleteSolution, cur
             <Card.Description>
             {solution}
             </Card.Description>
-
             <Card.Content extra>
                 <h4>Complexity</h4>
                 Time: {time} | Space: {space}
