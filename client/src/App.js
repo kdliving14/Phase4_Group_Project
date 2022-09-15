@@ -43,7 +43,7 @@ function App() {
   if (currentUser){
     return (
     <div>
-        <h2>Welcome, {currentUser.username}!</h2>
+        <h2 className='center'>Welcome, {currentUser.username}!</h2>
           <Navbar setCurrentUser={setCurrentUser}/>
           <Routes>
             <Route exact path="/algorithms" element={<AlgorithmList algorithms = {algorithms}/>}></Route>

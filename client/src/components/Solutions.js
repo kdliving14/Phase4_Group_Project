@@ -1,10 +1,11 @@
 import SolutionCard from "./SolutionCard";
-import {Card} from 'semantic-ui-react'
+import {Card, Container} from 'semantic-ui-react'
 
 function Solutions({sol, deleteSolution, currentUser})
 {
     return(
     <div className="ui segment">
+        <Container>
         <Card.Group>
         {sol.map((s)=>(
                 <SolutionCard 
@@ -20,6 +21,7 @@ function Solutions({sol, deleteSolution, currentUser})
                 />
             ))}
         </Card.Group>
+        </Container>
     </div>)
     
 }

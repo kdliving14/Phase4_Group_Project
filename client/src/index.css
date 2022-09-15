@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/light-grey-terrazzo.png");
 }
 
 code {
@@ -12,6 +13,7 @@ code {
     monospace;
 }
 
-.card {
+.center {
   text-align: center;
 }
+

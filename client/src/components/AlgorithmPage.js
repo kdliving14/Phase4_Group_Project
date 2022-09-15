@@ -67,6 +67,7 @@ function AlgorithmPage({formData, setFormData, addSolution, user}){
             <div hidden={isFormHidden}>
                 <br></br>
             <Divider />
+            <div className="center">vv Click here for a code sandbox vv</div>
             <Embed url="https://codesandbox.io/embed/new?codemirror=1"/>
                 <Form >
                     <br></br>
