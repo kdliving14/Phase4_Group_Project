@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Form, TextArea, Input, Button, Divider } from "semantic-ui-react";
 import ReactMarkdown from "react-markdown";
 
-function AlgorithmPage(){
+function AlgorithmPage({}){
 
     const params = useParams()
     const [isFormHidden, setIsFormHidden] = useState(true);
