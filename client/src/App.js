@@ -14,6 +14,13 @@ function App() {
   const [errors, setErrors] = useState([]);
   const [sol, setSol]=useState([])
   const [algorithms, setAlgorithms] = useState([]);
+  const [formData, setFormData] = useState({
+    user_id:"",
+    algorithm_id:"",
+    time_complexity:"",
+    space_complexity:"",
+    solution:""
+  })
 
   const updateUser = (user) => setCurrentUser(user)
 
@@ -23,6 +30,15 @@ function App() {
     fetch("/algorithms").then(res => res.json()).then(setAlgorithms)
   }, []); 
 
+  function addSolution(newSolution){
+    setSol((sol)=>[...sol, newSolution])
+  }
+
+  function deleteSolution(id){
+    const updatedSolutions = sol.map(s=> s.id !== id)
+    setSol(updatedSolutions)
+    window.location.reload(); 
+  }
 
   if (currentUser){
     return (
@@ -31,8 +47,8 @@ function App() {
           <Navbar setCurrentUser={setCurrentUser}/>
           <Routes>
             <Route exact path="/algorithms" element={<AlgorithmList algorithms = {algorithms}/>}></Route>
-            <Route path="/algorithms/:id" element={<AlgorithmPage/>}></Route>
-            <Route exact path="/solutions" element={<Solutions sol = {sol}/>}></Route>
+            <Route path="/algorithms/:id" element={<AlgorithmPage user ={currentUser} formData={formData} setFormData={setFormData} addSolution={addSolution}/>}></Route>
+            <Route exact path="/solutions" element={<Solutions sol = {sol} currentUser={currentUser} deleteSolution={deleteSolution} />}></Route>
             <Route exact path="/" element={<Home/>}></Route>
           </Routes>
           <br></br>
