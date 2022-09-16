@@ -14,30 +14,30 @@ function Home (){
             <p>
             Karter L. 
             ---
-            <a href="https://github.com/kdliving14" target="_blank" > Github </a>  
+            <a href="https://github.com/kdliving14" target="_blank" rel="noreferrer" > Github </a>  
             ---
-            <a href="https://www.linkedin.com/in/karter-livingston/" target="_blank"> LinkedIn </a> 
+            <a href="https://www.linkedin.com/in/karter-livingston/" target="_blank" rel="noreferrer"> LinkedIn </a> 
             </p>
             <p>
             Loren W.
             ---
-            <a href="https://github.com/LorenWilks" target="_blank" > Github </a> 
+            <a href="https://github.com/LorenWilks" target="_blank" rel="noreferrer"> Github </a> 
             ---
-            <a href="https://www.linkedin.com/in/loren-wilks-719a8019b/" target="_blank">LinkedIn</a> 
+            <a href="https://www.linkedin.com/in/loren-wilks-719a8019b/" target="_blank" rel="noreferrer">LinkedIn</a> 
             </p>
             <p>
             Brian H.
             ---
-            <a href="https://github.com/bandily" target="_blank"> Github </a> 
+            <a href="https://github.com/bandily" target="_blank" rel="noreferrer"> Github </a> 
             ---
-            <a href="https://www.linkedin.com/in/brianshuynh/" target="_blank"> LinkedIn </a> 
+            <a href="https://www.linkedin.com/in/brianshuynh/" target="_blank" rel="noreferrer"> LinkedIn </a> 
             </p>
             <p>
             Tommy N.
             ---
-            <a href="https://github.com/Gnomedealer" target="_blank"> Github </a> 
+            <a href="https://github.com/Gnomedealer" target="_blank" rel="noreferrer"> Github </a> 
             ---
-            <a href="https://www.linkedin.com/in/tommy-nguyen-9a3b90122/" target="_blank"> LinkedIn </a> 
+            <a href="https://www.linkedin.com/in/tommy-nguyen-9a3b90122/" target="_blank" rel="noreferrer"> LinkedIn </a> 
             </p>
 
         </div>

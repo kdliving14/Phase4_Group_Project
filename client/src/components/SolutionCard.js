@@ -1,6 +1,4 @@
-import {Card, Button, Icon} from 'semantic-ui-react'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-import {Link} from "react-router-dom"
+import {Card, Button} from 'semantic-ui-react'
 
 function SolutionCard({id, solution, alg, time, space, user, deleteSolution, currentUser}){
     console.log(`user: ${user}`)
@@ -17,7 +15,7 @@ function SolutionCard({id, solution, alg, time, space, user, deleteSolution, cur
     }
     
     return(
-        <Card className='ui centered card'>
+        <Card className='center'>
             <Card.Content header={`Algorithm #: ${alg}`} />
             {solution}
             <Card.Content extra>

@@ -32,7 +32,7 @@ function AlgorithmPage({formData, setFormData, addSolution, user}){
         fetch(`/algorithms/${params.id}`)
         .then(res=>{if(res.ok){res.json().then(res=>{setAlg(res)})}})
         .catch(res=>{console.log(res)})
-    }, []); 
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
   
 
     function handleChange(e){

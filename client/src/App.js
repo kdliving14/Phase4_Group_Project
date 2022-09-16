@@ -44,8 +44,8 @@ function App() {
   if (currentUser){
     return (
     <div>
-        <h2 className='center'>Welcome, {currentUser.username}!</h2>
-          <Navbar setCurrentUser={setCurrentUser}/>
+        <h1 className='center'><i class="file code outline icon"></i>CheetCode</h1>
+          <Navbar setCurrentUser={setCurrentUser} currentUser={currentUser}/>
           <Routes>
             <Route exact path="/algorithms" element={<AlgorithmList algorithms = {algorithms}/>}></Route>
             <Route path="/algorithms/:id" element={<AlgorithmPage user ={currentUser} formData={formData} setFormData={setFormData} addSolution={addSolution}/>}></Route>

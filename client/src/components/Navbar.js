@@ -1,5 +1,5 @@
 
-function Navbar({setCurrentUser}){
+function Navbar({setCurrentUser, currentUser}){
     
     function handleLogout(){
         fetch("/logout", {
@@ -21,6 +21,9 @@ function Navbar({setCurrentUser}){
                 Resources
                 </a>
                 <div className="right menu">
+                    <div className="item">
+                        <h4 >Welcome, {currentUser.username}!</h4>
+                    </div>
                     <div className="item">
                         <button className="ui button" onClick={handleLogout}>Logout!</button>
                     </div>

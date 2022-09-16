@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 
 function AlgorithmCard({title, id}){
     return(
-        <Card className='ui centered card'>
+        <Card className='center'>
             <Card.Content>
             <Card.Header>{title}</Card.Header>
             <Link to={`/algorithms/${id}`}>
