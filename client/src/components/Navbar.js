@@ -17,6 +17,9 @@ function Navbar({setCurrentUser}){
                 <a className="item" href={`/solutions`}>
                 Solution List
                 </a>
+                <a className="item" href={`/resources`}>
+                Resources
+                </a>
                 <div className="right menu">
                     <div className="item">
                         <button className="ui button" onClick={handleLogout}>Logout!</button>
