@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import AlgorithmList from './components/AlgorithmList'
 import AlgorithmPage from './components/AlgorithmPage';
 import Solutions from './components/Solutions';
+import Resources from './components/Resources';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -50,6 +51,7 @@ function App() {
             <Route path="/algorithms/:id" element={<AlgorithmPage user ={currentUser} formData={formData} setFormData={setFormData} addSolution={addSolution}/>}></Route>
             <Route exact path="/solutions" element={<Solutions sol = {sol} currentUser={currentUser} deleteSolution={deleteSolution} />}></Route>
             <Route exact path="/" element={<Home/>}></Route>
+            <Route exact path="/resources" element={<Resources/>}></Route>
           </Routes>
           <br></br>
       </div>)
